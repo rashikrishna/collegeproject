@@ -1,8 +1,24 @@
 <!DOCTYPE html>
 <html>
-<body bgcolor="wheat">
-<div style="border:2px solid green" padding:30px><center><h1>Shaswat<br>*Registration Form*</h1></center></div>
-  <h2><u>Basic Information :-</u></h2>
+<head>
+  <link rel="stylesheet" type="text/css" href="style1.css">
+  <link href="https://fonts.googleapis.com/css?family=Gayathri:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:700i&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="c">*Registration Form*</div>
+  <br>
+  <div id="navbar">
+  <div class="container">
+    <ul class="progressbar">
+      <li class="active">Basic Information</li>
+      <li> Workshop</li>
+      <li> Gaming</li>
+    </ul>
+  </div>
+</div>
+
 <script type="text/javascript" language="javascript">
   function EnableDisableTextBox(stud) {
         var passwd = document.getElementById("passwd");
@@ -11,88 +27,93 @@
             passwd.focus();
         }
     }
-    function EnableDisableTextBo(tshirt) {
+  function EnableDisableTextBo(tshirt) {
         var size = document.getElementById("size");
        size.disabled = tshirt.checked ? false : true;
         if (!size.disabled) {
             size.focus();
         }
     }
+  function KeepCount() {
+
+  var NewCount = 0
+
+  if (document.fm.machine.checked)
+  {NewCount = NewCount + 1}
+
+  if (document.fm.robotics.checked)
+  {NewCount = NewCount + 1}
+
+  if (document.fm.artificial.checked)
+  {NewCount = NewCount + 1}
+
+  if (NewCount == 3)
+  {
+  alert('Pick Just Two Please')
+  document.fm; return false;
+  }
+  var items=document.getElementsByName("workshop");
+  var selectedItems=" ";
+  for(var i=0; i<items.length; i++)
+  {
+    if(items[i].type=='checkbox' && items[i].checked==true)
+      selectedItems+=items[i].value+"\n";
+  }
+  localStorage.setItem("selectedItems",selectedItems);
+  }
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").style.top = "0";
+  } 
+  else
+   {
+    document.getElementById("navbar").style.top = "-150px";
+  }
+}
 </script>
-<form action="lis.php" method="POST">
+<div class="register">
+<form action="lis.php" method="POST" name="fm">
+<pre>
+<h1>Basic Information:</h1>
+<div class="f">
+First Name &emsp; : &emsp; <input type="text" name="fname" required placeholder="First Name"> &emsp; &emsp; &emsp; Middle Name &emsp; : &emsp; <input type="text" name="mname" placeholder="Middle Name">
+<br><div style="margin-left:-445px;">Last Name  &emsp; : &emsp; <input type="text" name="lname" required placeholder="Last Name"></div>
+<div style="margin-left: -290px;"> Gender &emsp; &emsp; &emsp; : &emsp; <input type="radio" name="gender" required value="M">Male &emsp; &emsp; <input type="radio" name="gender" required value="F">Female &emsp; &emsp; <input type="radio" name="gender" required value="O">Other<br></div>
+College Name : &emsp; <input type="text" name="cname" required placeholder="College Name">&ensp; &emsp; &emsp; &ensp;Department &emsp;  : &emsp; <input type="text" name="bname" required placeholder="Branch"><br>
+<div style="margin-left: -160px;"> Year &emsp; &emsp; &emsp; &ensp; : &emsp; <input type="radio" name="year" required value="1">1st &emsp; &emsp;  <input type="radio" name="year" required value="2">2nd &emsp; &emsp; &emsp;  <input type="radio" name="year" required value="3">3rd &emsp; &emsp; &emsp; <input type="radio" name="year" required value="4"> 4th<br></div> &emsp; <br>Mobile No &emsp;  : &emsp; <input type="tel" name="mob" required placeholder="Mobile No" maxlength="10"> &emsp; &emsp; &emsp; E-mail &emsp; &emsp; &emsp; &ensp;: &emsp; <input type="email" name="email" required placeholder="Email"><br>
+City &emsp; : &emsp; <input type="text" name="city" required placeholder="City">
+</div>
+</pre>
 <br>
-<center><h3> First Name:
-<input type="text" name="fname" placeholder="First Name">
-<br><br>
- Last Name:
-<input type="text" name="lname" placeholder="Last Name">
-<br><br>
-  Gender:
-<input type="radio" name="gender" value="male"> Male
-<input type="radio" name="gender" value="female"> Female
-<br><br>
-  College Name:
-<input type="text" name="cname" placeholder="College Name">
-<br><br>
-  Branch:
-<input type="text" name="bname" placeholder="Branch">
-<br><br>
-  Year:
-<input type="radio" name="year" value="1"> 1st 
-<input type="radio" name="year" value="2"> 2nd
-<input type="radio" name="year" value="3"> 3rd
-<input type="radio" name="year" value="4"> 4th
-<br><br>
-  Mobile No:
-<input type="number" name="mob" placeholder="Mobile No">
-<br><br>
-  E-mail:
-<input type="email" name="email" placeholder="Email">
-<br><br>
-  City:
-<input type="text" name="city" placeholder="City">
-</center>
-<h2><u>Your Interest :</u></h2>
 <br>
-<center>
-<h2><u>EVENTS:</u></h2>
+<h1>Events:</h1><br>
+<h2>WORKSHOP</h2><br>
+<label><input type="checkbox" name="workshop"  id="machine" value="machine" onclick="return KeepCount()"></label> &emsp; Machine Learning
+<label><input type="checkbox" name="workshop" id="robotics" value="robotics" onclick="return KeepCount()"></label> &emsp; Robotics
+<label><input type="checkbox" name="workshop" id="artificial" value="artificial"  onclick="return KeepCount()"></label> &emsp; Artificial Intelligence
 <br>
-<h2><u>WORKSHOP</u></h2>
-<label><input type="checkbox" name="event"></label>
-Machine Learning
-<br><br>
-<label><input type="checkbox" name="event"></label>
-Robotics
-<br><br>
-<label><input type="checkbox" name="event"></label>
-Artificial Intelligence
-<br><br>
-<h2><u>GAMING WIZARD</u></h2>
-<label><input type="checkbox" name="game"></label>
-Counter Strike
-<br><br>
-<label><input type="checkbox" name="game"></label>
-Pubg Pc Lite
-<br><br>
-<h4><label><input type="checkbox" name="accommodation"></label>
-For Accommodation</h4>
-<h4><label><input type="checkbox" name="tshirt" onclick="EnableDisableTextBo(this)"></label>
-For T-shirt
-<select id="size" disabled="disabled">
-    <option value="Size">Size</option>
-    <option value="size">S</option>
-    <option value="size">M</option>
-    <option value="size">L</option>
-</select></h4>
+<h2>GAMING WIZARD</h2><br>
+<label><input type="checkbox" name="game"  value="counter strike"></label> &emsp; Counter Strike
+<label><input type="checkbox" name="game"  value="pubg pc lite"></label> &emsp; Pubg Pc Lite
 <br>
-<h4><label><input type="checkbox" name="stud" id="stud" onclick="EnableDisableTextBox(this)"></label>
-Only For IIIT BHAGALPUR Students
+<label><input type="checkbox" name="accommodation"  value="yes"></label>Accommodation
+<br>
+<label><input type="checkbox" required onclick="EnableDisableTextBo(this)"></label>T-shirt &emsp;:&emsp; <select id="size" name="size" disabled="disabled">
+    <option selected disabled>Select Size</option>
+    <option  value="S">S</option>
+    <option  value="M">M</option>
+    <option  value="L">L</option>
+</select>
+<br>
+<h4><label><input type="checkbox" name="stud" id="stud" value="yes" onclick="EnableDisableTextBox(this)"></label>Only For IIIT BHAGALPUR Students<br> &emsp;
+Password&ensp;: &ensp; <input type="password" name="passwd" id="passwd" placeholder="Roll No/Coupon No" disabled="disabled">
 <br><br>
-Password:
-<input type="password" name="password" id="passwd" placeholder="Password" disabled="disabled">
-<label><input type="submit" name="stud" id="stud" value='check' onclick="match()"></label></h4>
 <h4> <input type="submit" value="Submit"></h4>
 </form>
+</pre>
 </center> 
+</div>
 </body>
 </html>
