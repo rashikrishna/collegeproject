@@ -12,9 +12,9 @@
   <div id="navbar">
   <div class="container">
     <ul class="progressbar">
-      <li class="active">Basic Information</li>
-      <li> Workshop</li>
-      <li> Gaming</li>
+      <li class="active" id="step1">Basic Information</li>
+      <li id="step2"> Workshop</li>
+      <li id="step3"> Gaming</li>
     </ul>
   </div>
 </div>
@@ -64,12 +64,29 @@
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  if ((document.body.scrollTop > 10 && document.body.scrollTop <300)|| (document.documentElement.scrollTop > 10 && document.documentElement.scrollTop <300)) {
     document.getElementById("navbar").style.top = "0";
-  } 
-  else
+    document.getElementById("step1").className = "active";
+    document.getElementById("step2").className = "activ";
+    document.getElementById("step3").className = "activ";
+   }
+  else if((document.body.scrollTop >= 300 && document.body.scrollTop <500) || (document.documentElement.scrollTop >= 300 && document.documentElement.scrollTop < 500))
    {
-    document.getElementById("navbar").style.top = "-150px";
+    document.getElementById("navbar").style.top = "0";
+    document.getElementById("step2").className = "active";
+    document.getElementById("step1").className = "activ";
+    document.getElementById("step3").className = "activ";
+  }
+  else if(document.body.scrollTop >=500 || document.documentElement.scrollTop >=500)
+  {
+    document.getElementById("navbar").style.top = "0";
+    document.getElementById("step2").className = "activ";
+    document.getElementById("step1").className = "activ";
+    document.getElementById("step3").className = "active";
+  }
+  else
+  {
+    document.querySelector('#navbar').style.top = "-150px"
   }
 }
 </script>
@@ -113,7 +130,7 @@ Password&ensp;: &ensp; <input type="password" name="passwd" id="passwd" placehol
 <h4> <input type="submit" value="Submit"></h4>
 </form>
 </pre>
-</center> 
+</center>
 </div>
 </body>
 </html>
